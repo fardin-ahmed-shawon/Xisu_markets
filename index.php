@@ -48,6 +48,35 @@ require 'dbConnection.php';
                 border: 1px solid rgba(0, 0, 0, .1);
                 border-radius: 5px;
             }
+
+            .img-container img {
+                max-width: 500px;
+            }
+
+            @media (max-width: 1830px) {
+                .img-container img {
+                    max-width: 400px;
+                }
+            }
+
+            @media (max-width: 1290px) {
+                .img-container img {
+                    max-width: 300px;
+                }
+            }
+
+            @media (max-width: 960px) {
+                .img-container img {
+                    max-width: 250px;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .img-container img {
+                    max-width: 350px;
+                }
+            }
+
         </style>
 
     </head>
@@ -58,30 +87,15 @@ require 'dbConnection.php';
             echo '<div style="z-index: 9999; position: fixed; width: 100%;" id="success-box">Order Successfully Placed...</div>';
         }
     ?>
-        <!-- Nav Start -->
-        <!-- <div id="nav">
-            <div class="container-fluid" style="display: flex; align-items: center; justify-content: center;">
-                <div id="logo" class="text-center">
-                    <a href="index.php"><img style="width: 300px; height: 300px;" src="img/logo.png" alt="Logo" /></a>
-                </div>
-                <div>
-                    <a class="px-3 bg-success text-light " href="admin-panel/login.php" target="_blank">
-                        <b>Admin Panel</b>
-                    </a>
-                </div>
-            </div>
-        </div> -->
-        <!-- Nav End -->
         
         <!-- Header Start-->
         <div id="header" style="margin-top: 0;">
             <div class="container">
-                <div id="logo" class="pb-5" style="display: flex; align-items: center; justify-content: space-between;">
-                    <a href="index.php"><img style="width: 200px;" src="img/logo.png" alt="Logo" /></a>
-                    
+                <div id="logo" class="pb-5" style="display: flex; align-items: center; justify-content: center;">
+                    <a href="index.php"><img style="width: 200px;border-radius: 50%;" src="img/logo.png" alt="Logo" /></a>
                 </div>
-                <div class="row align-items-center">
-                    <div class="col-md-7">
+                <div class="row">
+                    <div class="col-md-12">
                         <div class="header-content">
                         <?php
                         $sql = "SELECT * FROM home_text";
@@ -97,35 +111,21 @@ require 'dbConnection.php';
                         }
                         ?>
 
-                            <h2><span>
+                            <h2 class="text-center"><span>
                                 <?php echo $home_title; ?>
                             </span></h2>
 
-                            <ul class="fa-ul">
+                            <ul class="fa-ul text-center">
                                 <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i>
                                 </span><?php echo $home_des; ?></li>
                             </ul>
 
-                            
-
-                            <a class="btn" href="#products">Order Now</a>
+                            <div class="text-center" style="margin-top: 50px;">
+                                <a style="font-weight: 700;" class="btn" href="#products">অর্ডার করুন <i class="ri-shopping-cart-2-line"></i></a>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-5">
-                        <?php
-                            $sql = "SELECT home_image FROM images";
-                            $result = mysqli_query($conn, $sql);
-                            $row = mysqli_num_rows($result);
-                            if ($row > 0) {
-                                while ($data = mysqli_fetch_assoc($result)) {
-                                $home_img = $data['home_image'];
-                                }
-                            }
-                        ?>
-                        <div class="header-img">
-                            <img src="uploads/<?php echo $home_img; ?>" alt="Product Image">
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -135,39 +135,14 @@ require 'dbConnection.php';
         <div id="feature">
             <div class="container">
                 <div class="section-header">
-                    <h2>Product Features</h2>
-                    <p>
+                    <h2>প্রোডাক্টের গুণাবলী</h2>
+                    <!-- <p>
                         Our product has many features. Here are some of the features of our product. You can check out the features below.
-                    </p>
+                    </p> -->
                 </div>
+                <br><br>
                 <div class="row align-items-center">
-                    <div class="col-md-4">
-                    <!-- fetch first 3 -->
-                    <?php
-                        $sql = "SELECT * FROM features LIMIT 3";
-                        $result = mysqli_query($conn, $sql);
-                        $row = mysqli_num_rows($result);
-                        if ($row > 0) {
-                            while ($data = mysqli_fetch_assoc($result)) {
-                                $ft_title = $data['feature_title'];
-                                $ft_des = $data['feature_description'];
-
-                                echo '
-                                    <div class="product-feature">
-                                        <div class="product-content">
-                                            <h2>'.$ft_title.'</h2>
-                                            <p>'.$ft_des.'</p>
-                                        </div>
-                                        <div class="product-icon">
-                                            <i class="fa fa-check"></i>
-                                        </div>
-                                    </div>
-                                ';
-                            }
-                        }
-                    ?>
-                    </div>
-
+                    
                     <?php
                         $sql = "SELECT feature_image FROM images";
                         $result = mysqli_query($conn, $sql);
@@ -178,16 +153,16 @@ require 'dbConnection.php';
                             }
                         }
                     ?>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
                         <div class="product-img">
                             <img src="uploads/<?php echo $ftr_img; ?>" alt="Product Image">
                         </div>
                     </div>
 
-                    <div class="col-md-4">
-                    <!-- fetch last 3 -->
+                    <div class="col-md-6">
+
                     <?php
-                        $sql = "SELECT * FROM features ORDER BY feature_id DESC LIMIT 3";
+                        $sql = "SELECT * FROM features";
                         $result = mysqli_query($conn, $sql);
                         $row = mysqli_num_rows($result);
                         if ($row > 0) {
@@ -197,12 +172,11 @@ require 'dbConnection.php';
 
                                 echo '
                                     <div class="product-feature">
-                                        <div class="product-icon">
-                                            <i class="fa fa-check"></i>
-                                        </div>
-                                        <div class="product-content">
+                                        <div class="product-content" style="display: flex; align-items: center;">
+                                            <div class="product-icon">
+                                                <i class="fa fa-check"></i>
+                                            </div>
                                             <h2>'.$ft_title.'</h2>
-                                            <p>'.$ft_des.'</p>
                                         </div>
                                     </div>
                                 ';
@@ -211,21 +185,90 @@ require 'dbConnection.php';
                     ?>
                     </div>
                 </div>
+
+                <br><br>
+                <div>
+                    <!-- Example of a bordered table -->
+                    <table style="width: 100%; border: 1px solid #ddd; border-collapse: collapse; margin-top: 20px; overflow: auto;">
+                        <thead style="background-color: #f8f9fa;">
+                            <tr>
+                                <th style="color: #98BC62; font-size: 20px; border: 1px solid #ddd; padding: 10px; text-align: center; font-weight: bold;">গতি স্তর</th>
+                                <th style="color: #98BC62; font-size: 20px; border: 1px solid #ddd; padding: 10px; text-align: center; font-weight: bold;">অপারেটিং সময়</th>
+                                <th style="color: #98BC62; font-size: 20px; border: 1px solid #ddd; padding: 10px; text-align: center; font-weight: bold;">ভোল্টেজ ও কারেন্ট</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-size: 18px; border: 1px solid #ddd; padding: 10px; text-align: center;">১ম গতি</td>
+                                <td style="font-size: 18px; border: 1px solid #ddd; padding: 10px; text-align: center;">৫৮ ঘন্টা</td>
+                                <td style="font-size: 18px; border: 1px solid #ddd; padding: 10px; text-align: center;">অপারেটিং ভোল্টেজ ৮V, কারেন্ট ১৪০mA</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 18px; border: 1px solid #ddd; padding: 10px; text-align: center;">২য় গতি</td>
+                                <td style="font-size: 18px; border: 1px solid #ddd; padding: 10px; text-align: center;">৩২ ঘন্টা</td>
+                                <td style="font-size: 18px; border: 1px solid #ddd; padding: 10px; text-align: center;">অপারেটিং ভোল্টেজ ১০V, কারেন্ট ১৯০mA</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 18px; border: 1px solid #ddd; padding: 10px; text-align: center;">৩য় গতি</td>
+                                <td style="font-size: 18px; border: 1px solid #ddd; padding: 10px; text-align: center;">১৯ ঘন্টা</td>
+                                <td style="font-size: 18px; border: 1px solid #ddd; padding: 10px; text-align: center;">অপারেটিং ভোল্টেজ ১২V, কারেন্ট ২৬০mA</td>
+                            </tr>
+                            <tr>
+                                <td style="font-size: 18px; border: 1px solid #ddd; padding: 10px; text-align: center;">৪র্থ গতি</td>
+                                <td style="font-size: 18px; border: 1px solid #ddd; padding: 10px; text-align: center;">১২ ঘন্টা</td>
+                                <td style="font-size: 18px; border: 1px solid #ddd; padding: 10px; text-align: center;">অপারেটিং ভোল্টেজ ১৪V, কারেন্ট ৩১০mA</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
         <!-- Feature End-->
         
+
+        <!-- Product Image -->
+        <div id="testimonials">
+            <div class="container img-container">
+
+                <div class="row">
+                    <div class="col-md-4" style="display: flex; justify-content: center;">
+                        <img src="img/1.png" alt="IMG">
+                    </div>
+                    <div class="col-md-4" style="display: flex; justify-content: center;">
+                        <img src="img/2.png" alt="IMG">
+                    </div>
+                    <div class="col-md-4" style="display: flex; justify-content: center;">
+                        <img src="img/3.png" alt="IMG">
+                    </div>
+                </div> 
+                <br>
+                <div class="row">
+                    <div class="col-md-4" style="display: flex; justify-content: center;">
+                        <img src="img/4.png" alt="IMG">
+                    </div>
+                    <div class="col-md-4" style="display: flex; justify-content: center;">
+                        <img src="img/5.png" alt="IMG">
+                    </div>
+                    <div class="col-md-4" style="display: flex; justify-content: center;">
+                        <img src="img/6.png" alt="IMG">
+                    </div>
+                </div> 
+            </div>
+        </div>
+        <!-- Product Image -->
+
         
         <!-- Products Start -->
         <div id="products">
             <div class="container">
                 <div class="section-header">
-                    <h2>Get Your Products</h2>
+                    <h2>প্রোডাক্ট</h2>
                     <p>
-                        Choose your favorite product from our collection. Here is our product collection.
+                    এই পণ্যটি অর্ডার করতে, "Add to Cart" বোতামটি টিপুন এবং তারপর Checkout পৃষ্ঠায় যান।
                     </p>
                 </div>
-                <div class="row align-items-center">
+                <div class="row align-items-center" style="display: flex; justify-content: center;">
                     <!-- Product List -->
 
                     <?php 
@@ -251,7 +294,7 @@ require 'dbConnection.php';
                                             <div class="product-content">
                                                 <h2>'.$productName.'</h2>
                                                 <h3>৳ '.$productPrice.'</h3>
-                                                <button class="btn" onclick="addToCart(this)">Add to Cart</button>
+                                                <button style="font-weight: 700;" class="btn" onclick="addToCart(this)">Add to Cart</button>
                                             </div>
                                         </div>
                                     </div>
@@ -272,10 +315,10 @@ require 'dbConnection.php';
         <div id="testimonials">
             <div class="container">
                 <div class="section-header">
-                    <h2>100% Customer Satisfaction</h2>
-                    <p>
+                    <h2>কাস্টমারের রিভিউ</h2>
+                    <!-- <p>
                         Here are some of the reviews from our customers. We are happy to serve you.
-                    </p>
+                    </p> -->
                 </div>
                 <div class="owl-carousel testimonials-carousel">
 
@@ -305,11 +348,11 @@ require 'dbConnection.php';
         <!-- Checkout Start -->
         <div id="checkout">
             <div class="container" id="products">
-                <div class="section-header">
-                    <h2>Checkout</h2>
-                    <p>
+                <div class="section-header" style="max-width: 100%;">
+                    <h2>অর্ডার করতে নিচের ফর্মটি পূরণ করে প্লেস অর্ডার বাটনে ক্লিক করুন!</h2>
+                    <!-- <p>
                         Place your order now and get a discount. Hurry up! Limited time offer.
-                    </p>
+                    </p> -->
                 </div>
                 <div class="row align-items-center">
                     <div class="col-12">
@@ -503,10 +546,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div id="faqs">
             <div class="container">
                 <div class="section-header">
-                    <h2>Get in Touch</h2>
-                    <p>
+                    <h2>যোগাযোগ করুন</h2>
+                    <!-- <p>
                     You can contact with us through the following methods. We are here to help you.
-                    </p>
+                    </p> -->
                 </div>
                 <div class="row align-items-center">
                     <div class="col-12 text-center">

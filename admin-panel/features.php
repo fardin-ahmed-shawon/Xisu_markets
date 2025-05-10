@@ -115,10 +115,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                                 <label><h4>Feature Title</h4></label>
                                 <input type="text" class="form-control" placeholder="Feature title" name="feature_title" required="">
                               </div>
-                              <div class="form-group">
+                              <!-- <div class="form-group">
                                 <label><h4>Feature Description:</h4></label>
-                                <textarea type="text" rows="4" class="form-control" placeholder="Feature description" name="feature_description" required=""></textarea>
-                              </div>
+                                <textarea type="text" rows="4" class="form-control" placeholder="Feature description" name="feature_description" ></textarea>
+                              </div> -->
                               <div class="form-group mt-2">
                                 <button class="btn btn-dark" type="submit"><i class="far fa-paper-plane"></i> Save Feature</button>
                               </div>

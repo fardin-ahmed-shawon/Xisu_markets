@@ -273,7 +273,7 @@ body.mobile-nav-active #mobile-nav-toggle {
     position: relative;
     padding: 90px 0;
     margin-top: 90px;
-    background: linear-gradient(rgba(256, 256, 256, .9), rgba(256, 256, 256, .9)), url(../img/header-bg.jpg);
+    background: #F1FFE6;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
