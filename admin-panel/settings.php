@@ -89,21 +89,21 @@ include('../dbConnection.php');
                                         </div>
 
                                         <div class="col-md-4">
-                                            <article class="box mb-3 bg-light p-3" style="border: 1px solid #ddd;">
-                                                <h6>Change Text Content</h6>
-                                                <small class="text-muted d-block" style="width: 70%">You can update all of your page text content by clicking here</small>
-                                                <br>
-                                                <a class="btn btn-dark" href="change-text.php">Edit</a>
-                                            </article>
+                                           <article class="box mb-3 bg-light p-3" style="border: 1px solid #ddd;">
+                                               <h6>Change Text Content</h6>
+                                               <small class="text-muted d-block" style="width: 70%">You can update all of your page text content by clicking here</small>
+                                               <br>
+                                               <a class="btn btn-dark" href="change-text.php">Edit</a>
+                                           </article>
                                         </div>
 
                                         <div class="col-md-4">
-                                            <article class="box mb-3 bg-light p-3" style="border: 1px solid #ddd;">
-                                                <h6>Product Features</h6>
-                                                <small class="text-muted d-block" style="width: 70%">You can update all of your product features by clicking here</small>
-                                                <br>
-                                                <a class="btn btn-dark" href="features.php">Edit</a>
-                                            </article>
+                                           <article class="box mb-3 bg-light p-3" style="border: 1px solid #ddd;">
+                                               <h6>Product Features</h6>
+                                               <small class="text-muted d-block" style="width: 70%">You can update all of your product features by clicking here</small>
+                                               <br>
+                                               <a class="btn btn-dark" href="features.php">Edit</a>
+                                           </article>
                                         </div>
 
                                         <div class="col-md-4">

@@ -35,10 +35,10 @@ session_start();
       <h3>Admin Login</h3>
 
       <br>
-      <div class="credentials">
-        <p>username: admin_39_</p>
-        <p>password: 87654321</p>
-      </div>
+      <!--<div class="credentials">-->
+      <!--  <p>username: admin_39_</p>-->
+      <!--  <p>password: 87654321</p>-->
+      <!--</div>-->
 
       <br><br>
       <h3 class="msg-box"></h3>

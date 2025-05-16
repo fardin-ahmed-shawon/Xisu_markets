@@ -113,11 +113,16 @@ require 'dbConnection.php';
 
                             <h2 class="text-center"><span>
                                 <?php echo $home_title; ?>
+                                <!-- প্যারামিটার আউটডোর সুইং ফ্যান – আধুনিক প্রযুক্তির অনন্য সমন্বয় -->
                             </span></h2>
 
                             <ul class="fa-ul text-center">
                                 <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i>
                                 </span><?php echo $home_des; ?></li>
+                                
+                                <!-- <li><span class="fa-li"><i class="far fa-arrow-alt-circle-right"></i> -->
+                                <!-- </span>আপনার ক্যাম্পিং, আউটডোর পার্টি অথবা লং জার্নির সঙ্গী হতে পারে আমাদের অত্যাধুনিক বহিরাঙ্গন ঝুলন্ত ফ্যান। শক্তিশালী ব্যাটারি, স্মার্ট কন্ট্রোল এবং উচ্চ কার্যক্ষমতার সমন্বয়ে তৈরি এই ফ্যান আপনার প্রতিটি মুহূর্তে দেবে আরাম আর স্বস্তি। আসুন দেখে নিই এর চমৎকার বৈশিষ্ট্যসমূহ</li> -->
+                                
                             </ul>
 
                             <div class="text-center" style="margin-top: 50px;">
@@ -141,8 +146,35 @@ require 'dbConnection.php';
                     </p> -->
                 </div>
                 <br><br>
+                
                 <div class="row align-items-center">
-                    
+                    <div class="col-md-4">
+                    <!-- fetch first 3 -->
+                    <?php
+                        $sql = "SELECT * FROM features LIMIT 3";
+                        $result = mysqli_query($conn, $sql);
+                        $row = mysqli_num_rows($result);
+                        if ($row > 0) {
+                            while ($data = mysqli_fetch_assoc($result)) {
+                                $ft_title = $data['feature_title'];
+                                $ft_des = $data['feature_description'];
+
+                                echo '
+                                    <div class="product-feature">
+                                        <div class="product-content">
+                                            <h2>'.$ft_title.'</h2>
+                                            <p>'.$ft_des.'</p>
+                                        </div>
+                                        <div class="product-icon">
+                                            <i class="fa fa-check"></i>
+                                        </div>
+                                    </div>
+                                ';
+                            }
+                        }
+                    ?>
+                    </div>
+
                     <?php
                         $sql = "SELECT feature_image FROM images";
                         $result = mysqli_query($conn, $sql);
@@ -153,16 +185,16 @@ require 'dbConnection.php';
                             }
                         }
                     ?>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="product-img">
                             <img src="uploads/<?php echo $ftr_img; ?>" alt="Product Image">
                         </div>
                     </div>
 
-                    <div class="col-md-6">
-
+                    <div class="col-md-4">
+                    <!-- fetch last 3 -->
                     <?php
-                        $sql = "SELECT * FROM features";
+                        $sql = "SELECT * FROM features ORDER BY feature_id DESC LIMIT 3";
                         $result = mysqli_query($conn, $sql);
                         $row = mysqli_num_rows($result);
                         if ($row > 0) {
@@ -172,11 +204,12 @@ require 'dbConnection.php';
 
                                 echo '
                                     <div class="product-feature">
-                                        <div class="product-content" style="display: flex; align-items: center;">
-                                            <div class="product-icon">
-                                                <i class="fa fa-check"></i>
-                                            </div>
+                                        <div class="product-icon">
+                                            <i class="fa fa-check"></i>
+                                        </div>
+                                        <div class="product-content">
                                             <h2>'.$ft_title.'</h2>
+                                            <p>'.$ft_des.'</p>
                                         </div>
                                     </div>
                                 ';
@@ -225,6 +258,19 @@ require 'dbConnection.php';
             </div>
         </div>
         <!-- Feature End-->
+
+
+        <!-- Video -->
+        <div>
+            <div class="container">
+            <video width="100%" controls>
+                <source src="vdo/video.mp4" type="video/mp4">
+                <source src="mov_bbb.ogg" type="video/ogg">
+                Your browser does not support HTML video.
+            </video>
+            </div>
+        </div>
+        <!-- End -->
         
 
         <!-- Product Image -->
@@ -554,17 +600,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <div class="row align-items-center">
                     <div class="col-12 text-center">
                         <div class="contact-info">
-                            <h3><i class="fa fa-map-marker"></i>67/B, ADDL Tower, 1st Floor Dhanmondi 15/A, Dhaka</h3>
-                            <h3><i class="fa fa-envelope"></i>easytechsolutionx@gmail.com</h3>
-                            <h3><i class="fa fa-phone"></i>+880 1580-741616</h3>
+                            <h3>
+                                <i class="fa fa-map-marker"></i>Exporter :- RSSK Hong Kong Limited. Room# 1137, (11th Floor) Beverly Commercial Centre, 87-105, Chatham Road, Tsim Sha Tsui, Kowloon, Hong Kong. Tel :- 852-97652114</h3>
+                                <h3>
+                                <i class="fa fa-map-marker"></i>Importer : Pride Reputation (Pvt) Ltd. 8/2 Motalib Tower ( 4th floor) room 4G Hatirpool Dhaka.</h3>
+                                
+                            <!--<h3><i class="fa fa-envelope"></i>easytechsolutionx@gmail.com</h3>-->
+                            
+                            <h3><i class="fa fa-phone"></i>01978528282</h3>
+                            
                             <a class="btn" href="#">Contact Us</a>
-                            <div class="social">
-                                <a href=""><i class="fab fa-twitter"></i></a>
-                                <a href=""><i class="fab fa-facebook"></i></a>
-                                <a href=""><i class="fab fa-linkedin"></i></a>
-                                <a href=""><i class="fab fa-instagram"></i></a>
-                                <a href=""><i class="fab fa-youtube"></i></a>
-                            </div>
+                            <!--<div class="social">-->
+                            <!--    <a href=""><i class="fab fa-twitter"></i></a>-->
+                            <!--    <a href=""><i class="fab fa-facebook"></i></a>-->
+                            <!--    <a href=""><i class="fab fa-linkedin"></i></a>-->
+                            <!--    <a href=""><i class="fab fa-instagram"></i></a>-->
+                            <!--    <a href=""><i class="fab fa-youtube"></i></a>-->
+                            <!--</div>-->
                         </div>
                     </div>
                 </div>

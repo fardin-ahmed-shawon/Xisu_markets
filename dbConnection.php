@@ -9,10 +9,11 @@ $database_name = "xisu_markets";
 // $password = "Xnz8Y4lmP~~T";
 // $database_name = "xisu_markets";
 
-$conn = mysqli_connect($servername, $username, $password, $database_name);
+$conn = new mysqli($servername, $username, $password, $database_name);
+$conn->set_charset("utf8mb4");
 
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-} 
+}
 ?>
